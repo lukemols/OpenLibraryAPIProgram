@@ -102,24 +102,5 @@ namespace BookTracker
             //HttpResponseMessage response = await client.GetAsync(CreateURL());
             return await client.GetStringAsync(URL);           
         }
-
-        static void ProcessFile()
-        {
-            string path = @"C:\Users\luca9\Desktop\file.txt";
-            string text = File.ReadAllText(path);
-
-            JsonDocument document = JsonDocument.Parse(text);
-            JsonElement root = document.RootElement;
-            JsonElement docsArray = root.GetProperty("docs");
-            int count = 0;
-            foreach (JsonElement doc in docsArray.EnumerateArray())
-            {
-                Console.WriteLine(doc.GetProperty("title"));
-                if (++count > 10)
-                {
-                    break;
-                }
-            }
-        }
     }
 }
